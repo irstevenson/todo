@@ -8,13 +8,6 @@ import spock.lang.Specification
  */
 @TestFor(Project)
 class ProjectSpec extends Specification {
-
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
     void "test basic constraints"() {
 		given: 'a newly setup Project'
 			Project testPrj = new Project( name: 'Test Project' )
