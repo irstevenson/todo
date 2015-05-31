@@ -4,6 +4,8 @@ class Item {
 	Priority priority
 	String description
 	Date dueDate
+	/** Is the item complete/done */
+	boolean done = false
 
 	Date dateCreated
 	Date lastUpdated
