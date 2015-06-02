@@ -12,7 +12,7 @@ class Item {
 
     static constraints = {
 		priority nullable: true
-		description maxSize: 200, blank: false
+		description maxSize: 200, blank: false, unique: 'project'
 		dueDate nullable: true
     }
 
