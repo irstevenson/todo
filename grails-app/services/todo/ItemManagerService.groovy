@@ -9,11 +9,13 @@ class ItemManagerService {
 	 * Returns a list of projects and item count for each.
 	 */
 	List listProjects() {
+		log.debug "listProjects() - START"
 		def projects = []
 		Project.list().each { proj ->
 			projects.add( [ id: proj.id, name: proj.name, itemCount: Item.countByProject( proj ) ] )
 		}
 
+		log.debug "returning ${projects.size()} projects"
 		projects
 	}
 	
@@ -284,5 +286,9 @@ class ItemCommand {
 
 			it
 		}
+	}
+
+	String toString() {
+		"projectId: $projectId, priority: $priority, dueDate: $dueDate, done: $done, description: $description"
 	}
 }

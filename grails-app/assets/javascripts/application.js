@@ -8,13 +8,7 @@
 //= require jquery
 //= require_tree .
 //= require_self
+//= require bootstrap-3.3.4/js/bootstrap.min
+//= require moment-2.8.4/moment.min
+//= require bootstrap-datetimepicker-3.1.3/js/bootstrap-datetimepicker.min
 
-if (typeof jQuery !== 'undefined') {
-	(function($) {
-		$('#spinner').ajaxStart(function() {
-			$(this).fadeIn();
-		}).ajaxStop(function() {
-			$(this).fadeOut();
-		});
-	})(jQuery);
-}

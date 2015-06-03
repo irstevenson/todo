@@ -7,7 +7,8 @@
 * You're free to add application-wide styles to this file and they'll appear at the top of the
 * compiled file, but it's generally better to create a new file per style scope.
 *
+*= require bootstrap-datetimepicker-3.1.3/css/bootstrap-datetimepicker.min
+*= require bootstrap-3.3.4/css/bootstrap.min
 *= require main
-*= require mobile
 *= require_self
 */

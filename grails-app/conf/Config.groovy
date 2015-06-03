@@ -114,4 +114,26 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+	info 'grails.app.conf.BootStrap',
+         'todo'
+
+    environments {
+        development {
+            // SQL Query logging
+//            debug 'org.hibernate.SQL'
+//            trace 'org.hibernate.type.descriptor.sql.BasicBinder'
+
+			trace 'grails.app.controllers',
+				  'grails.app.services',
+				  'grails.app.filters',
+				  'todo'
+        }
+        test {
+            debug 'grails.app.controllers',
+                'grails.app.services',
+                'grails.app.filters',
+                'todo'
+        }
+    }
 }
