@@ -19,7 +19,7 @@
             </div>
         </div></div>
     </g:if>
-	<g:if test="${itemDetails?.errors}">
+	<g:if test="${itemDetails?.hasErrors()}">
 		<div class="row"><div class="col-sm-12">
 			<div class="alert alert-warning alert-dismissible">
 				<p>The data provided was incorrect:</p>
@@ -35,14 +35,15 @@
                <div class="form-group">
                    <label for="description" class="col-sm-3 control-label">Description</label>
                    <div class="col-sm-9">
-                       <g:textField name="description" class="form-control" placeholder="Description"/>
+                       <g:textField name="description" class="form-control"
+					   placeholder="Description" value="${itemDetails?.description}"/>
                    </div>
                </div>
                 <div class="form-group">
                    <label for="dueDate" class="col-sm-3 control-label">Due Date</label>
                    <div class="col-sm-4">
                        <div class='input-group date' id='projectDate'>
-                           <g:textField name="dueDate" class="form-control" data-date-format="YYYY/MM/DD" readonly="false"/>
+                           <g:textField name="dueDate" class="form-control" data-date-format="YYYY/MM/DD" readonly="false" value="${itemDetails?.dueDate?.format( 'yyyy/MM/dd' )}"/>
                            <span class="input-group-addon">
                                <span class="glyphicon glyphicon-calendar"></span>
                            </span>
@@ -52,7 +53,8 @@
                <div class="form-group">
                		<label for="done" class="col-sm-3 control-label">Done</label>
                    	<div class="col-sm-9">
-                      	<input type="checkbox" id="done" name="done"/>
+                      	<input type="checkbox" id="done" name="done" ${itemDetails?.done ? 'checked'
+						: '' }/>
                    	</div>
                </div>
                <div class="form-group">
