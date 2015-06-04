@@ -60,8 +60,7 @@
                <div class="form-group">
                		<label for="done" class="col-sm-3 control-label">Done</label>
                    	<div class="col-sm-9">
-                      	<input type="checkbox" id="done" name="done" ${itemDetails?.done ? 'checked'
-						: '' }/>
+                      	<input type="checkbox" id="done" name="done" ${itemDetails?.done ? 'checked' : '' }/>
                    	</div>
                </div>
                <div class="form-group">

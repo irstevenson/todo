@@ -38,12 +38,12 @@
 				</div>
 				<div class="panel-body">
 					<g:link controller="itemEditor" action="newItem" id="${session.currentProjectId}">
-						<button type="button" class="btn btn-primary">
+						<button id="addItem" type="button" class="btn btn-primary">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Item
 						</button>
 					</g:link>
 
-					<table class="table">
+					<table id="itemsTable" class="table">
 						<thead>
 							<tr>
 								<th class="text-center">Pri</th>
@@ -58,7 +58,7 @@
 								<tr><td colspan="5" class="text-center">add a item</td></tr>
 							</g:if>
 							<g:each var="details" in="${items}">
-								<tr>
+								<tr class="itemRow">
 									<td class="text-center">${details.item.priority ?: 'None'}</td>
 									<td class="text-center">${details.item.dueDate?.format( 'yyyy-MM-dd' ) ?: 'None' }</td>
 									<td>${details.item.description}</td>
@@ -80,7 +80,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading"><div class="panel-title"><h2>Projects</h2></div></div>
 				<div class="panel-body">
-				<table class="table table-condensed">
+				<table id="projectsTable" class="table table-condensed">
 					<thead>
 						<tr><th class="col-sm-9">Name</th><th class="text-center col-sm-3">Actions</th></tr>
 					</thead>
@@ -89,12 +89,12 @@
 						<tr><td colspan="2" class="text-center">add a project</td></tr>
 					</g:if>
 					<g:each var="project" in="${projects}">
-						<tr>
+						<tr class="projectRow">
 							<td>${project.name} <span class="badge">${project.itemCount}</span></td>
 							<td class="text-center">
-								<span class="glyphicon-clickable glyphicon glyphicon-trash"
+								<span class="removeProject glyphicon-clickable glyphicon glyphicon-trash"
 									  onclick='window.location="${g.createLink( action: 'removeProject', id: project.id )}"'></span>
-								<span class="glyphicon-clickable glyphicon glyphicon-zoom-in"
+								<span class="viewItems glyphicon-clickable glyphicon glyphicon-zoom-in"
 									  onclick='window.location="${g.createLink( action: 'viewItems', id: project.id )}"'></span>
 							</td>
 						</tr>
@@ -106,7 +106,7 @@
 						<label class="sr-only" for="projectName">new project name</label>
 						<g:textField class="form-control" name="projectName" placeholder="new project name"/>
 					</div>	
-					<button type="submit" class="btn btn-primary">
+					<button id="addProject" type="submit" class="btn btn-primary">
 						<span class="glyphicon glyphicon-plus"></span>
 					</button>
 				</g:form>
