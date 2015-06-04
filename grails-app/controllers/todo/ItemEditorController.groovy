@@ -37,6 +37,7 @@ class ItemEditorController {
 	 */
 	def saveItem( Long id, ItemCommand itemDetails ) {
 		log.debug "saveItem( $id ) - START"
+		log.debug "params: $params"
 		log.debug "itemDetails: $itemDetails"
 		if( id == 0 ) {
 			log.debug "processing as new item"

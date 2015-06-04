@@ -252,7 +252,7 @@ class ItemManagerService {
 
 @Validateable
 class ItemCommand {
-	def projectId
+	Long projectId
 	Item.Priority priority
 	String description
 	Date dueDate
