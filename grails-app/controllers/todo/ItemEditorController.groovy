@@ -1,5 +1,7 @@
 package todo
 
+import grails.validation.ValidationException
+
 class ItemEditorController {
 	def itemManagerService
 
@@ -39,21 +41,53 @@ class ItemEditorController {
 		log.debug "saveItem( $id ) - START"
 		log.debug "params: $params"
 		log.debug "itemDetails: $itemDetails"
+
+		boolean tryAgain = false
+
+		// Closure for the processing task
+		def processRequest = { serviceCall ->
+			if( !itemDetails.validate() ) {
+				log.debug "itemDetails failed validation"
+				tryAgain = true
+			}
+			else {
+				try {
+					// All is suitable, let's save it
+					serviceCall.call()
+				}
+				catch( ValidationException ve ) {
+					// TODO: This is far from proper handling of the situation, improve if time permits
+					flash.error = ve.message
+					tryAgain = true
+				}
+			}
+		}
+
+		// perform actual processing
 		if( id == 0 ) {
 			log.debug "processing as new item"
-			if( !itemDetails.validate() ) {
+			processRequest {
+				itemManagerService.addItem( itemDetails )
+			}
+
+			if( tryAgain ) {
 				flash.itemDetails = itemDetails
 				return redirect( action: 'newItem', id: itemDetails.projectId )
 			}
-
-			// All is suitable, let's save it
-			itemManagerService.addItem( itemDetails )
 		}
 		else {
 			log.debug "updating existing item"
-			itemManagerService.updateItem( id, itemDetails )
+			processRequest {
+				itemManagerService.updateItem( id, itemDetails )
+			}
+
+			if( tryAgain ) {
+				flash.itemDetails = itemDetails
+				return redirect( action: 'editItem', id: id )
+			}
 		}
 
+		// If all was well, back to the index
 		redirect controller: 'toDo', action: 'index'
 	}
 }

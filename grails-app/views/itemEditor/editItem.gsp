@@ -19,11 +19,11 @@
             </div>
         </div></div>
     </g:if>
-	<g:if test="${itemDetails?.hasErrors()}">
+	<g:if test="${flash.itemDetails?.hasErrors()}">
 		<div class="row"><div class="col-sm-12">
 			<div class="alert alert-warning alert-dismissible">
 				<p>The data provided was incorrect:</p>
-				<g:renderErrors bean="${itemDetails}"/>
+				<g:renderErrors bean="${flash.itemDetails}"/>
 			</div>
 		</div>
 	</g:if>
