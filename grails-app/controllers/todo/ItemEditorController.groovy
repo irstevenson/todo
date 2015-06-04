@@ -17,7 +17,8 @@ class ItemEditorController {
 	def newItem( Long id ) {
 		log.debug "newItem( $id ) - START"
 		render( view: 'editItem',
-				model: [ targetProjectId: id, targetItemId: 0, itemDetails: flash.itemDetails ] )
+				model: [ targetProjectId: id, targetItemId: 0, itemDetails: flash.itemDetails,
+				priorities: itemManagerService.listPriorities() ] )
 	}
 
 	/**
@@ -29,7 +30,8 @@ class ItemEditorController {
 		def item = itemManagerService.listItems( [ itemId: id ] )[0].item
 
 		render( view: 'editItem',
-				model: [ targetProjectId: item.projectId, targetItemId: id, itemDetails: item ] )
+				model: [ targetProjectId: item.projectId, targetItemId: id, itemDetails: item,
+				priorities: itemManagerService.listPriorities() ] )
 	}
 
 	/**

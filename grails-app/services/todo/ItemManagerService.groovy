@@ -226,6 +226,16 @@ class ItemManagerService {
 			throw new BusinessRuleViolation( 'the dueDate - if specified - must not be earlier than now' )
 	}
 
+	@grails.transaction.NotTransactional
+	@groovy.transform.Memoized
+	Map listPriorities() {
+		def priorities = [:]
+		for( priority in Item.Priority.values() )
+			priorities[ priority.id ] = priority.toString()
+
+		priorities
+	}
+
 	/**
 	 * Exception to indicate a specified entity could not be found
 	 * by it's provided id.

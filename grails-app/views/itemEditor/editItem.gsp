@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-sm-6">
             <g:form name="itemDetails" controller="itemEditor" action="saveItem" id="${targetItemId}" class="form-horizontal">
-			<input type="hidden" name="projectId" value="${targetProjectId}">
+			   <input type="hidden" name="projectId" value="${targetProjectId}">
                <div class="form-group">
                    <label for="description" class="col-sm-3 control-label">Description</label>
                    <div class="col-sm-9">
@@ -39,7 +39,14 @@
 					   placeholder="Description" value="${itemDetails?.description}"/>
                    </div>
                </div>
-                <div class="form-group">
+               <div class="form-group">
+                   <label for="priority" class="col-sm-3 control-label">Priority</label>
+                   <div class="col-sm-4">
+                       <g:select name="priority" class="form-control" from="${priorities*.value}"
+					   value="${itemDetails?.priority}"/>
+                   </div>
+               </div>
+               <div class="form-group">
                    <label for="dueDate" class="col-sm-3 control-label">Due Date</label>
                    <div class="col-sm-4">
                        <div class='input-group date' id='projectDate'>
