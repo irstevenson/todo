@@ -40,7 +40,7 @@
                </div>
                 <div class="form-group">
                    <label for="dueDate" class="col-sm-3 control-label">Due Date</label>
-                   <div class="col-sm-3">
+                   <div class="col-sm-4">
                        <div class='input-group date' id='projectDate'>
                            <g:textField name="dueDate" class="form-control" data-date-format="YYYY/MM/DD" readonly="false"/>
                            <span class="input-group-addon">
