@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>ToDo</title>
+		<title>ToDo - Welcome</title>
 		<link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
 		<style>
 		h1.mainheading {
@@ -19,6 +19,6 @@
 		</style>
 	</head>
 	<body>
-		<h1 class="mainheading clickable" onclick='window.location="${g.createLink( controller: 'toDo' )}"'>ToDo!</h1>
+		<h1 id="logo" class="mainheading clickable" onclick='window.location="${g.createLink( controller: 'toDo' )}"'>ToDo!</h1>
 	</body>
 </html>
